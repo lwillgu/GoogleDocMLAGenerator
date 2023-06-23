@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="icon" type="image/x-icon" href="https://docs.google.com/drawings/d/e/2PACX-1vToZvdAQDx6d66mhshgfqy_mB_MP4T4ggvIfrQuwqsXjf7g-28FCaJd7sdSJek4N4R4t3dUKdXHxfv5/pub?w=960&h=960">
+
+    <title>MLA Essay Generator</title>
+    <base target="_top">
+<style>
+.button {
+
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+
+.button:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+    </head>
+
+<body>
+  <div style="width: 30%; height: 400px; margin: auto; margin-left: auto; margin-right: auto; border-color: black; border-radius: 8px; border-style: solid;">
+    <h1 style="text-align: center;">MLA Google Doc</h1>
+
+
+<h2 style="display: none; text-align: center;"id="changeme">Welcome, <script>document.write(localStorage.getItem('fname'));</script></h2>
+ <center>
+    <button class="button"  onclick="newFunctino()" value="Start">Start</button>
+
+<button class="button" id="changebutton" style="display: none;"onclick="reLoad()">Reset Name Values</button>
+<br>
+<div style="display: none;" id="loader" class="loader"></div>
+
+</center>
+  
+</div>
+
+
+
+
+
+
+<script>
+if (localStorage.getItem("fname")) {
+  document.getElementById('changeme').style.display = "block"; 
+document.getElementById('changebutton').style.display = "block";
+}else{
+
+}
+
+function reLoad() {
+  window.localStorage.clear();
+       google.script.run
+      .withSuccessHandler(function(url){
+        window.open(url,'_top');
+      })
+      .getScriptURL();
+}
+
+      function newFunctino() {
+        
+if (localStorage.getItem('fname') !== null) {
+first = localStorage.getItem("fname");
+last = localStorage.getItem("lname");
+} else {
+   first = prompt("Enter First Name", "");
+   localStorage.setItem('fname', first);
+    last = prompt("Enter Last Name", "");
+   localStorage.setItem('lname', last);
+}
+
+
+
+
+
+      title = prompt("Enter title", "");
+       period = prompt("Enter class", "");
+       teacher = prompt("Enter teacher", "");
+       if (title == "") {return;}
+       if (period == "") {return;}
+       if (teacher == "") {return;}
+    document.getElementById('loader').style.display = "block"; 
+
+  google.script.run.withSuccessHandler(function (value) {window.open (value);} ).doSomething(first,last,title,period,teacher);
+wait(5000);
+    document.getElementById('loader').style.display = "none"; 
+
+      }
+     
+    </script>
+  <!-- coment
+<script>
+   localStorage.setItem('fname', 'Lance');
+
+var name = localStorage.getItem('fname');
+
+if (name != null) {
+document.getElementById('fname').value = 'hi';
+alert("hi");
+
+    document.write(name);
+}else{
+    document.write('Name is not found');
+}
+document.write(name);
+</script>
+
+<button id="technician" onclick="changeValue(this)">Technician</button>
+<button id="developer" onclick="changeValue(this)">Developer</button>
+<input type="text" id="type" name="type" value="change" />
+<script>
+  function hi() {
+document.getElementById('fname').value = name;
+lastname = localStorage.getItem('lname'); 
+document.getElementById('lname').value = lastname;
+}
+</script>
+<button onclick="hi()">hi</button>
+    <form>
+      First Name:<br><input type="name"  id="fname"><br>
+      Last Name:<br><input type="name" id="lname"><br>
+      Period Number:<br><input type="number" id="period"><br>
+      Teacher:<br><input type="text" id="teacher"><br>
+      Title:<br><input type="text" id="title"><br>
+      </form>
+      -->
+  </body>
+</html>
+
+<script>
+</script>
